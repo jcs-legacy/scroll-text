@@ -8,7 +8,7 @@
 ;; Keyword: scroll animation animate text
 ;; Version: 0.0.1
 ;; Package-Requires: ((emacs "24.3"))
-;; URL: https://github.com/jcs090218/scroll-text
+;; URL: https://github.com/jcs-elpa/scroll-text
 
 ;; This file is NOT part of GNU Emacs.
 
