@@ -1,0 +1,9 @@
+# ignore these directories.
+/.git
+/recipes
+/test
+scroll-text-pkg.el
+scroll-text-autoloads.el
+
+# ignore generated files.
+*.elc
