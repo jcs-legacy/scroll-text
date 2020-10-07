@@ -5,7 +5,7 @@
 > Scroll the text for content.
 
 <p align="center">
-  <img src="./etc/demo.git"/>
+  <img src="./etc/demo.gif"/>
 </p>
 
 ## Contribution
