@@ -65,7 +65,7 @@ Form by (`point' . `string').")
 ;;; Core
 
 (defun scroll-text--insert (str)
-  "Real insert function when `scroll-text-mode' is enabled."
+  "Real insert function with STR when 'scroll-text-mode' is enabled."
   (let (scroll-text-mode) (insert str)))
 
 (defun scroll-text--display-char ()
@@ -100,7 +100,7 @@ Form by (`point' . `string').")
   (push (cons (point) (split-string str  "" t)) scroll-text--queue))
 
 (defun scroll-text--insert--advice-around (fnc &rest args)
-  "Bind execution around `insert' function."
+  "Bind execution around `insert' function, FNC and ARGS."
   (if (not scroll-text-mode)
       (apply fnc args)
     (scroll-text--add-queue (scroll-text--concat-string-list args))
