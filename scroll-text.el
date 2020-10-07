@@ -99,7 +99,7 @@ Form by (`point' . `string').")
   "Add STR to animation queue.
 Optional argument PT is the starting display point."
   (unless pt (setq pt (point)))
-  (push (cons pt (split-string str  "" t)) scroll-text--queue))
+  (push (cons pt (split-string str "" t)) scroll-text--queue))
 
 (defun scroll-text--insert--advice-around (fnc &rest args)
   "Bind execution around `insert' function, FNC and ARGS."
