@@ -10,7 +10,7 @@
 
 ## Usage
 
-```el
+```
 M-x scroll-text-mode
 ```
 
