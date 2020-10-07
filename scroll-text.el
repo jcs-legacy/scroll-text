@@ -32,7 +32,11 @@
 
 ;;; Code:
 
-
+(defgroup scroll-text nil
+  "Scroll the text for content."
+  :prefix "scroll-text-"
+  :group 'tool
+  :link '(url-link :tag "Repository" "https://github.com/jcs-elpa/scroll-text"))
 
 (provide 'scroll-text)
 ;;; scroll-text.el ends here
