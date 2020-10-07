@@ -8,6 +8,12 @@
   <img src="./etc/demo.gif"/>
 </p>
 
+## Usage
+
+```el
+M-x scroll-text-mode
+```
+
 ## Contribution
 
 If you would like to contribute to this project, you may either
