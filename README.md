@@ -4,6 +4,10 @@
 # scroll-text
 > Scroll the text for content.
 
+<p align="center">
+  <img src="./etc/demo.git"/>
+</p>
+
 ## Contribution
 
 If you would like to contribute to this project, you may either
