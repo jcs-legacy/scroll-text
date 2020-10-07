@@ -13,7 +13,7 @@
 You can start scroll text animation in any writable buffer with any text at
 anywhere inside buffer.
 
-```
+```el
 (scroll-text-start "Hello World!~" (point-min))
 ```
 
