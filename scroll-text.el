@@ -87,13 +87,13 @@ Form by (`point' . `string').")
           (scroll-text--insert char)
           (setf (car next-queue) (point)))))))
 
-(defun scroll-text--animate ()
+(defun scroll-text-animate ()
   "Start the animation."
   (scroll-text--display-char)
   (unless (= (length scroll-text--queue) 0)
     (scroll-text--kill-timer scroll-text--timer)
     (setq scroll-text--timer
-          (run-with-timer scroll-text-delay nil #'scroll-text--animate))))
+          (run-with-timer scroll-text-delay nil #'scroll-text-animate))))
 
 (defun scroll-text-add-queue (str &optional pt)
   "Add STR to animation queue.
@@ -106,7 +106,7 @@ Optional argument PT is the starting display point."
   (if (not scroll-text-mode)
       (apply fnc args)
     (scroll-text-add-queue (scroll-text--concat-string-list args))
-    (scroll-text--animate)))
+    (scroll-text-animate)))
 
 (advice-add 'insert :around #'scroll-text--insert--advice-around)
 
