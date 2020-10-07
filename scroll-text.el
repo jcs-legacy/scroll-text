@@ -70,7 +70,6 @@ Form by (`point' . `string').")
 
 (defun scroll-text--display-char ()
   "Display a character."
-  (interactive)
   (let* ((len (length scroll-text--queue))
          next-queue pt char-lst char)
     (unless (= len 0)
