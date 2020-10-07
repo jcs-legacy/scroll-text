@@ -6,7 +6,7 @@
 ;; Author: Shen, Jen-Chieh <jcs090218@gmail.com>
 ;; Description: Scroll the text for content.
 ;; Keyword: scroll animation animate text
-;; Version: 0.1.0
+;; Version: 0.1.1
 ;; Package-Requires: ((emacs "24.3") (dash "2.14.1"))
 ;; URL: https://github.com/jcs-elpa/scroll-text
 
