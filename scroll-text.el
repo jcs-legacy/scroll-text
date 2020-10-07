@@ -7,7 +7,7 @@
 ;; Description: Scroll the text for content.
 ;; Keyword: scroll animation animate text
 ;; Version: 0.1.0
-;; Package-Requires: ((emacs "24.3"))
+;; Package-Requires: ((emacs "24.3") (dash "2.14.1"))
 ;; URL: https://github.com/jcs-elpa/scroll-text
 
 ;; This file is NOT part of GNU Emacs.
@@ -32,6 +32,8 @@
 
 ;;; Code:
 
+(require 'dash)
+
 (defgroup scroll-text nil
   "Scroll the text for content."
   :prefix "scroll-text-"
@@ -45,7 +47,7 @@
 
 (defvar-local scroll-text--queue '()
   "Queue for text to scroll.
-Form by (`point' . `string').")
+Form by (`point' . `list-string').")
 
 (defvar-local scroll-text--timer nil
   "Timer to animate scroll text.")
@@ -59,14 +61,13 @@ Form by (`point' . `string').")
 (defun scroll-text--concat-string-list (lst-str)
   "Convert list of string, LST-STR to one string."
   (let ((full-str ""))
-    (dolist (s lst-str) (when (stringp s) (setq full-str (concat full-str s))))
+    (when (consp lst-str) (setq lst-str (-flatten lst-str)))
+    (dolist (s lst-str)
+      (when (stringp s)
+        (setq full-str (concat full-str s))))
     full-str))
 
 ;;; Core
-
-(defun scroll-text--insert (str)
-  "Real insert function with STR when 'scroll-text-mode' is enabled."
-  (let (scroll-text-mode) (insert str)))
 
 (defun scroll-text--display-char ()
   "Display a character."
@@ -83,7 +84,7 @@ Form by (`point' . `string').")
         (setq char (pop (cdr next-queue)))
         (save-excursion
           (goto-char pt)
-          (scroll-text--insert char)
+          (insert char)
           (setf (car next-queue) (point)))))))
 
 (defun scroll-text-animate ()
@@ -100,20 +101,26 @@ Optional argument PT is the starting display point."
   (unless pt (setq pt (point)))
   (push (cons pt (split-string str "" t)) scroll-text--queue))
 
-(defun scroll-text--insert--advice-around (fnc &rest args)
-  "Bind execution around `insert' function, FNC and ARGS."
-  (if (not scroll-text-mode)
-      (apply fnc args)
-    (scroll-text-add-queue (scroll-text--concat-string-list args))
-    (scroll-text-animate)))
+;;;###autoload
+(defun scroll-text-start (&rest args)
+  "Start scroll text with list of string (ARGS)."
+  (scroll-text-add-queue (scroll-text--concat-string-list args))
+  (scroll-text-animate))
 
-(advice-add 'insert :around #'scroll-text--insert--advice-around)
+(defun scroll-text--enable ()
+  "Enable `scroll-text' in current buffer."
+  (setq scroll-text--queue '()))
+
+(defun scroll-text--disable ()
+  "Disable `scroll-text' in current buffer."
+  (setq scroll-text--queue nil))
 
 ;;;###autoload
 (define-minor-mode scroll-text-mode
   "Minor mode 'scroll-text-mode'."
   :lighter " ScrTxt"
-  :group scroll-text)
+  :group scroll-text
+  (if scroll-text-mode (scroll-text--enable) (scroll-text--disable)))
 
 (provide 'scroll-text)
 ;;; scroll-text.el ends here
