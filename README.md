@@ -11,7 +11,8 @@
 ## Usage
 
 You can start scroll text animation in any writable buffer with any text at
-anywhere inside buffer.
+anywhere inside buffer. For instance, The following code will display
+`Hello World!~` in the beginning of the buffer.
 
 ```el
 (scroll-text-start "Hello World!~" (point-min))
