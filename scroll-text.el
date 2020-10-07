@@ -95,15 +95,17 @@ Form by (`point' . `string').")
     (setq scroll-text--timer
           (run-with-timer scroll-text-delay nil #'scroll-text--animate))))
 
-(defun scroll-text--add-queue (str)
-  "Add STR to animation queue."
-  (push (cons (point) (split-string str  "" t)) scroll-text--queue))
+(defun scroll-text-add-queue (str &optional pt)
+  "Add STR to animation queue.
+Optional argument PT is the starting display point."
+  (unless pt (setq pt (point)))
+  (push (cons pt (split-string str  "" t)) scroll-text--queue))
 
 (defun scroll-text--insert--advice-around (fnc &rest args)
   "Bind execution around `insert' function, FNC and ARGS."
   (if (not scroll-text-mode)
       (apply fnc args)
-    (scroll-text--add-queue (scroll-text--concat-string-list args))
+    (scroll-text-add-queue (scroll-text--concat-string-list args))
     (scroll-text--animate)))
 
 (advice-add 'insert :around #'scroll-text--insert--advice-around)
