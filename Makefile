@@ -7,14 +7,14 @@ PKG-FILES := scroll-text.el
 
 TEST-FILES := $(shell ls test/scroll-text-*.el)
 
-.PHONY: clean checkdoc lint unix-build unix-compile	unix-test
+.PHONY: clean checkdoc lint build compile unix-test
 
-unix-ci: clean unix-build unix-compile
+ci: clean build compile
 
-unix-build:
+build:
 	$(CASK) install
 
-unix-compile:
+compile:
 	@echo "Compiling..."
 	@$(CASK) $(EMACS) -Q --batch \
 		-L . \
