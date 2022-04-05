@@ -1,9 +1,14 @@
-# ignore these directories.
+# ignore these directories
 /.git
 /recipes
-/test
-scroll-text-pkg.el
-scroll-text-autoloads.el
 
-# ignore generated files.
+# ignore generated files
 *.elc
+
+# eask packages
+.eask/
+dist/
+
+# packaging
+*-autoloads.el
+*-pkg.el
