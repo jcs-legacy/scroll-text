@@ -7,7 +7,7 @@ TEST-FILES := $(shell ls test/scroll-text-*.el)
 
 .PHONY: clean checkdoc lint package install compile test
 
-ci: clean package install compile test
+ci: clean package install compile
 
 package:
 	@echo "Packaging..."
