@@ -4,11 +4,10 @@
 ;; Created date 2020-10-05 16:19:50
 
 ;; Author: Shen, Jen-Chieh <jcs090218@gmail.com>
-;; Description: Scroll the text for content.
-;; Keyword: scroll animation animate text
+;; URL: https://github.com/jcs-elpa/scroll-text
 ;; Version: 0.1.1
 ;; Package-Requires: ((emacs "24.3") (dash "2.14.1"))
-;; URL: https://github.com/jcs-elpa/scroll-text
+;; Keywords: scroll animation animate text
 
 ;; This file is NOT part of GNU Emacs.
 
