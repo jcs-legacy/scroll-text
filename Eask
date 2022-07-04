@@ -3,7 +3,7 @@
          "Scroll the text for content")
 
 (website-url "https://github.com/jcs-elpa/scroll-text")
-(keywords "scroll" "animation" "animate" "text")
+(keywords "convenience" "scroll" "animation" "animate" "text")
 
 (package-file "scroll-text.el")
 
