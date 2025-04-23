@@ -1,3 +1,5 @@
+;; -*- mode: eask; lexical-binding: t -*-
+
 (package "scroll-text"
          "0.1.1"
          "Scroll the text for content")
